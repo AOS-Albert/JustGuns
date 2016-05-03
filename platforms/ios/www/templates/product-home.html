@@ -1,0 +1,120 @@
+<ion-view title='<img class="title-image" src="img/logo2.png" />' class="home-view" ng-init="init()">
+
+    <ion-content has-bouncing="true">
+        <ion-refresher
+            pulling-text="Refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-slide-box active-slide="myActiveSlide" auto-play="true" slide-interval="5500" does-continue="true" show-pager="true">
+            <ion-slide>
+                <img class="flow" src="img/gun1.jpg" alt="Bag Icon"/>
+            </ion-slide>
+            <ion-slide>
+                <img class="flow" src="img/gun2.jpg" alt="Bag Icon"/>
+            </ion-slide>
+            <ion-slide>
+                <img class="flow" src="img/gun3.jpg" alt="Bag Icon"/>
+            </ion-slide>       
+        </ion-slide-box>
+        <div class="home-container">
+            <div>
+                <div class="no-margin">
+                    <h4>BROWSE BY CATEGORY <button type="button" class="btn btn-primary" ng-click="categoryMoreAction()">MORE</button></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-33">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/1.jpg"/>
+                        <small>Hand</small>
+                    </a>
+                </div>
+                <div class="col-33">
+                    <a href="#" class="thumbnail" >
+                        <img class="gun-home" src="img/2.jpg"/>
+                        <small>Rifle</small>
+                    </a>
+                </div>
+                <div class="col-33">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/3.jpg"/>
+                        <small>Shotgun</small>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <div class="no-margin">
+                    <h4>BROWSE BY MODEL <button type="button" class="btn btn-primary" ng-click="modelMoreAction()">MORE</button></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-33 ">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/4.jpg"/>
+                        <small>Barrett</small>
+                    </a>
+                </div>
+                <div class="col-33">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/5.jpg"/>
+                        <small>Glock</small>
+                    </a>
+                </div>
+                <div class="col-33">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/6.jpg"/>
+                        <small>Ruger</small>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="no-margin">
+                    <h4>LATEST ADD PRODUCTS <button type="button" class="btn btn-primary" ng-click="productMoreAction()">MORE</button></h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50 ">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/4.jpg"/>
+                        <small>Barrett</small>
+                    </a>
+                    <h4>$387.5</h4>
+                </div>
+                <div class="col-50 ">
+                    <a href="#" class="thumbnail">
+                        <img class="gun-home" src="img/3.jpg"/>
+                        <small>Shotgun</small>
+                    </a>
+                    <h4>$387.5</h4>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-dark">
+        <div class="bar bar-footer bar-dark">
+            <div class="row">
+                <div class="col col-20 tab-button" ng-click="goToHome()">
+                    <i class="icon ion-ios-home"></i>
+                    <p>Home</p>
+                </div>
+                <div class="col col-20 tab-button" ng-click="goToSearch()">
+                    <i class="icon ion-search"></i>
+                    <p>Home</p>
+                </div>
+                <div class="col col-20 tab-button" ng-click="goToProduct()">
+                    <i class="icon ion-android-apps"></i>
+                    <p>Home</p>
+                </div>
+                <div class="col col-20 tab-button" ng-click="goToLike()">
+                    <i class="icon ion-android-favorite"></i>
+                    <p>Home</p>
+                </div>
+                <div class="col col-20 tab-button" ng-click="goToChat()">
+                    <i class="icon ion-ios-chatbubble"></i>
+                    <p>Home</p>
+                </div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

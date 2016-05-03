@@ -1,0 +1,63 @@
+<ion-view class="register-view" title='<img class="title-image" src="img/logo.png" />'>
+    <ion-content has-bouncing="true">
+        <div class="logo-welcome">
+            <img src="img/Business_Bell.png" class="contact-avatar">
+        </div>
+        <div class="contact-desc-box">
+            <div class="thin-border">
+
+                <p>
+                    <strong>Restaurants:</strong> Increase business for your restaurant! Partner with the BIZI To Go team today and let us do the work for you!
+                </p>
+
+                <p>
+                    <strong>Resorts:</strong> Increase dining options for your guests! We provide excellent customer service, and guests can get customized meals delivered directly to their hotel rooms!
+                </p>
+
+                <p>
+                    <strong>Jobs:</strong> BIZI To Go is hiring new Delivery and Sales Associates!
+                </p>
+                <p>
+                    Address: 8297 Champions Gate Blvd.
+                </p>
+                <p>
+                    Champions Gate, FL 33896
+                </p>
+                <p class="text-center"><strong>Contact Us Today!</strong></p>
+            </div>
+        </div>
+        <div class="welcome-txt">
+            <h2 class="three"><span>CONTACT US</span></h2>
+        </div>
+        <form name="register-form">
+            <div class="list">
+                <div class="select">
+                    <span class="arr"></span>
+                    <select ng-model="user.company_type" ng-options="company.val as company.name for company in companyList">
+                        <option value="">-- Please choose --</option>
+                    </select>
+                </div>
+                <label class="item item-input">
+                    <input ng-model="user.f_name" type="text" placeholder="Company Name (if applicable)">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="user.l_name" type="text" placeholder="Your Full Name">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="user.phone" type="tel" placeholder="Phone">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="user.email" type="email" placeholder="Email Address">
+                </label>
+                <label class="item item-input">
+                    <textarea ng-model="user.message"  placeholder="Message"></textarea>
+                </label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block button-assertive regsiter-btn" ng-click="contactus()">CONTACT US</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,75 @@
+<div class="modal fullscreen-modal"  >
+    <ion-content class="text-center intro-content">
+
+        <ion-slide-box on-slide-changed="slideChanged(index)">
+            <ion-slide>
+                <div class="intro-slide-title padding">
+                    <div class=" welcome-center">
+                        <div class="intro-welcome-bag">
+                            <img src="img/applogo_white.png" alt="Bag Icon" />
+                        </div>
+                        <h4>
+                            Welcome!
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="intro-slide-title padding">
+                    <div class=" welcome-center">
+                        <div class="intro-welcome-bag">
+                            <img src="img/how1.png" alt="Bag Icon" />
+                        </div>
+                        <h1>
+                            
+                        </h1>
+                        <h4>
+                            Pick your grocery from select stores, checkout, and we will deliver them at your doorstep.
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="intro-slide-title padding">
+                    <div class=" welcome-center">
+                        <div class="intro-welcome-bag">
+                            <img src="img/how2.png" alt="Bag Icon" />
+                        </div>
+                        <h1>
+                           
+                        </h1>
+                        <h4>
+                            A qualified grubrunner will take care of your order.
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="intro-slide-title padding">
+                    <div class=" welcome-center">
+                        <div class="intro-welcome-bag">
+                            <img src="img/result2.png" alt="Bag Icon" />
+                        </div>
+                        <h1>
+                            
+                        </h1>
+                        <h4>
+                            We deliver when you have scheduled.
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="bottom-area">
+            <button style="" ng-click="closeIntro()" class="button button-light button-large">
+                <span ng-if="slideIndex != 3">
+                    <i class="icon ion-android-arrow-forward"></i>
+                </span>
+                <span ng-if="slideIndex == 3">
+                    Start Using Grubroll!
+                </span>
+            </button>
+        </div>
+    </ion-content>
+</div>

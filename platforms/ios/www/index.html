@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html ng-app="ionicApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>JustGuns</title>
+
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="lib/ionic-ion-drawer-master/ionic.contrib.drawer.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="css/ion-place-autocomplete.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="lib/ionic-ion-drawer-master/ionic.contrib.drawer.js"></script>
+
+    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <!-- Cookie manage -->
+    <script src="lib/angular-cookies/angular-cookies.min.js"></script>
+    <!-- Lazy image load -->
+    <script src="lib/ion-image-lazy-load/ionic-image-lazy-load.js"></script>
+    <!-- ngCordova -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <!-- ngStorage -->
+    <script src="lib/ngstorage/ngStorage.min.js"></script>
+    <!-- Angular resource -->
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <!-- XML parser -->
+    <script src="js/xml2json.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="js/openfb.js"></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/ion-place-autocomplete.js"></script>
+    <script src="js/prefixfree.min.js"></script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    
+</head>
+
+<body class="platform-android platform-cordova platform-webview platform-ios platform-cordova platform-webview">
+
+
+<ion-side-menus>
+
+    <ion-side-menu-content ng-controller="NavCtrl">
+        <ion-nav-bar class="bar-positive">
+<!--             <ion-nav-back-button  class="button-clear"><i class="ion-ios-arrow-back"></i>
+            </ion-nav-back-button> -->
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
+                </button>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+        <ion-nav-view animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left" ng-controller="NavCtrl" ng-init="init()">
+        <ion-header-bar class="bar bar-header bar-assertive">
+            <div class="left-menu-avatar">
+                <div class="avatar-wrap">
+                    <img ng-if="user_image" ng-src="{{ user_image }}" ng-click="goToProfile()" menu-close >
+                    <img ng-if="!user_image" src="img/profile-pic-default.png"  ng-click="goToProfile()" menu-close >
+                </div>
+                <div class="left-menu-avatar-p">
+                    <p ng-show="loginType != 'Guest'"> {{ first_name }} {{ last_name }} </p>
+                    <p ng-show="loginType == 'Guest'"> Guest User </p>
+                    <p style="font-size: 15px;"> guest.user.123@gmail.com </p>
+                </div>
+
+            </div>
+        </ion-header-bar>
+        <ion-content has-bouncing="true">
+
+            <ion-list style="color: black;">
+                <ion-item class="item-icon-left" href="#/product-home" menu-close nav-clear>
+                    <i class="icon ion-ios-home"></i><span style="color: black">HOME</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/terms" menu-close nav-clear>
+                    <i class="icon ion-android-menu"></i><span style="color: black">ACTIVITY</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/terms" menu-close nav-clear>
+                    <i class="icon ion-android-notifications"></i><span style="color: black">NOTIFICATIONS</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/terms" menu-close nav-clear>
+                    <i class="icon ion-image"></i><span style="color: black">MY PRODUCTS</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/privacy" menu-close nav-clear>
+                    <i class="icon ion-ios-chatbubble"></i><span style="color: black">MESSAGES</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/terms" menu-close nav-clear>
+                    <i class="icon ion-android-favorite"></i><span style="color: black">MY FAVOURITES</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/return-policy" menu-close nav-clear>
+                    <i class="icon ion-image"></i><span style="color: black">GUN SHOWS NEARBY</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/return-policy" menu-close nav-clear>
+                    <i class="icon ion-image"></i><span style="color: black">FFL NEARBY</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/return-policy" menu-close nav-clear>
+                    <i class="icon ion-information-circled"></i><span style="color: black">ABOUT JUSTGUNS</span>
+                </ion-item>
+                <ion-item class="item-icon-left" href="#/return-policy" menu-close nav-clear>
+                    <i class="icon ion-email"></i><span style="color: black">CONTACT US</span>
+                </ion-item>
+                <ion-item class="item-icon-left" ng-click="login()" menu-close nav-clear ng-show="!loggedIn || (loginType == 'Guest')">
+                    <i class="icon ion-log-in"></i><span style="color: black">LOG OUT</span>
+                </ion-item>
+                <ion-item class="item-icon-left" ng-click="logout()" menu-close nav-clear ng-show="loggedIn">
+                    <i class="icon ion-log-out"></i><span style="color: black">Logout</span>
+                </ion-item>
+
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+</body>
+</html>

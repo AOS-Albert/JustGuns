@@ -1,0 +1,205 @@
+<ion-view title='<img class="title-image" src="img/logo.png" />' class="order-view" ng-init="init()">
+
+    <div class="bar bar-subheader">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">CHECKOUT</h1>
+    </div>
+
+    <ion-content has-bouncing="true"> 
+        <ion-list>
+
+            <div class="item item-divider">
+                Deliver to
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">First Name</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.first_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Last Name</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.last_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Phone No.</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="tel" ng-model="order.phone">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">E-mail</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Location</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.resort_name" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Location Address</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.resort_address" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full no-padding">Room No./<br>Suite Details</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.room_no" placeholder="Suite Details">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full no-padding">Driver Special<br>Instructions</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.special_instructions" placeholder="Special instructions">
+                </div>
+            </div>
+            <div class="item item-divider">
+                Checkout
+            </div><!--dragon-->
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Address</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.address">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">City</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.city">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">State</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.state">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Billing Zip</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.zipcode">
+                </div>
+            </div>
+            <div class="item item-divider">
+                Card Details
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Card No.</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" valid-number ng-model="order.card.card_no">
+                </div>
+                <!--<div class="col">
+                    <span class="icon ion-ios-checkmark valid-card-mark"></span>
+                </div>-->
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Expiry</span>
+                </div>
+                <div class="col">
+                    <div class="select">
+                        <span class="arr"></span>
+                        <select ng-model="order.card.month">
+                            <option ng-repeat="i in months" value="{{i}}" ng-class="">{{ i }}</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <span class="arr"></span>
+                        <select ng-model="order.card.year">
+                            <option ng-repeat="j in years" value="{{j}}">{{j}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">CVV</span>
+                </div>
+                <div class="col col-33">
+                    <input class="input-border cvv-input" type="text" ng-model="order.card.cvv">
+                </div>
+                <div class="col">
+                    <span class="icon ion-help-circled cvv-info-mark" ng-click="showCVVHelp()"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-33">
+                    <span class="input-label-full">Card Holder Name</span>
+                </div>
+                <div class="col">
+                    <input class="input-border" type="text" ng-model="order.card.card_owner">
+                </div>
+            </div>
+            <div class="item item-divider">
+                Plese tip your driver
+            </div>
+            <div class="row">
+                <div class="col col-67">
+                    <span class="tip-txt">(You may also tip in CASH)</span>
+                </div>
+                <div class="col">
+                    <label class="pre-input">$</label>
+                    <input class="input-border tip-input" type="text" valid-number ng-change="changeDriverTip()" ng-model="order.driver_tip" >
+                </div>
+            </div>
+            <div class="item item-divider">
+                Price
+            </div>
+            <div class="row black-bold">
+                <div class="col col-50">Order total</div>
+                <div class="col text-right">${{ total_price }}</div>
+            </div>
+            <div class="row black-bold">
+                <div class="col col-50">Tip</div>
+                <div class="col text-right">${{ driverTip }}</div><!--Dragon-->
+            </div>
+            <div class="row">
+                <div class="col col-50">Delivery Charge</div>
+                <div class="col text-right black-bold">${{ deliveryPrice }}</div>
+            </div>
+            <div class="row">
+                <div class="col col-50">Taxes</div>
+                <div class="col text-right black-bold">${{ taxesPrice }}</div>
+            </div>
+            <div class="row red-bold">
+                <div class="col col-50">Grand total</div>
+                <div class="col text-right">${{ grand_total }}</div>
+            </div>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive" ng-click="submitOrder()">
+        <h1 class="title"><icon class="icon ion-ios-cart"></icon>&nbsp;Submit Order</h1>
+    </ion-footer-bar>
+</ion-view>

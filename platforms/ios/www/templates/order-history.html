@@ -1,0 +1,50 @@
+<ion-view title='<img class="title-image" src="img/logo.png" />' class="order-view" ng-init="init()">
+    <div class="bar bar-subheader" style="clear:both">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">ORDER HISTORY</h1>
+    </div>
+
+    <ion-content has-bouncing="true" style="border:1px solid red;">
+        
+        <ion-refresher
+                pulling-text="Refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+
+            <ion-item ng-repeat="order in orderList"
+                      ng-style="{'line-height': '125px'}"
+                      ng-click="openOrder(order)"
+                      item="item"
+                      href="#"
+                      class="item-icon-right right-arrow-item">
+                <div class="row">
+                    <div class="col col-20 first">
+                        <h2 class="order-title"> {{ changeDateFormat(order.Order.order_time) | date:'dd' }} </h2>
+                        <p class="order-datetime"> {{ changeDateFormat(order.Order.order_time) | date: 'MMM yyyy'}} </p>
+                    </div>
+                    <div class="col col-50 second">
+                        <h2 class="order-restr-name"> {{ order.Restraurent.restraurent_name }}</h2>
+                        <p class="order-id">Order No: {{ order.Order.id }}</p>
+                        <span class="order-state status_{{ order.Order.status }}">{{ orderStatusList[order.Order.status] }}</span>
+                    </div>
+                    <div class="col third">
+                        <p class="order-amount">Qty: <span class="black-org">{{ order.OrderDish.length }}</span> </p>
+                        <p class="order-price">Total: <span class="black-org">${{ order.Order.grandTotal }}</span> </p>
+                    </div>
+                </div>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+            </ion-item>
+            <ion-item ng-show="orderList.length == 0">
+                <div class="row">
+                    <div class="col">
+                        <p>{{ loadStatus }}</p>
+                    </div>
+                </div>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

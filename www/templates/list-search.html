@@ -1,0 +1,43 @@
+<ion-view title="" class="welcome-view" hide-nav-bar="false">
+    <ion-content padding="true">
+		<div class="bar bar-header item-input-inset">
+			<label class="item-input-wrapper">
+				<i class="icon ion-ios-search placeholder-icon"></i>
+				<input type="search" placeholder="Search">
+			</label>
+			<button class="button button-clear">
+			Cancel
+			</button>
+		</div>
+        <div class="list">
+        </div>
+		
+	</ion-content>
+
+    <ion-footer-bar align-title="left" class="bar-dark">
+        <div class="bar bar-footer bar-dark">
+            <div class="row">
+                <div class="col-20">
+                    <button class="button icon ion-ios-home bottom-button" ng-click="goToHome()"></button>
+                        <h6>Home</h6>
+                </div>
+                <div class="col-20">
+                    <button class="button icon ion-search bottom-button" ng-click="goToSearch()"></button>
+                    <h6>Search</h6>
+                </div>
+                <div class="col-20">
+                    <button class="button icon ion-android-apps bottom-button" ng-click="goToProduct()"></button>
+                    <h6>My Products</h6>
+                </div>
+                <div class="col-20">
+                    <button class="button icon ion-android-favorite bottom-button" ng-click="goToLike()"></button>
+                    <h6>Likes</h6>
+                </div>
+                <div class="col-20">
+                    <button class="button icon ion-ios-chatbubble bottom-button" ng-click="goToChat()"></button>
+                    <h6>Chat</h6>
+                </div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

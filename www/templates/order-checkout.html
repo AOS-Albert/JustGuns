@@ -1,0 +1,80 @@
+<ion-view title='<img class="title-image" src="img/logo.png" />' class="order-view" ng-init="init()">
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
+            </button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-icon button-clear ion-ios-trash" ng-click="clear()">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <div class="bar bar-subheader" style="clear:both">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">ORDER SUMMARY</h1>
+    </div>
+
+    <ion-content has-bouncing="true" class="r4" padding="true">
+
+        <div class="row text-center md-box cart-empty" ng-show="items.length == 0">
+            <div class="col">
+                <img src="img/cart_empty.gif">
+            </div>
+        </div>
+
+        <ion-list  ng-show="items.length > 0">
+
+            <ion-item ng-repeat="dish in items" class="order-item">
+                <div class="row">
+                    <div class="col col-67">
+                        <h2 class="order-item-title"> {{dish.Dish.dish_name}} </h2>
+                        <p class="order-price"> ${{ dish.Dish.dish_price }} </p>
+                        <p class="order-topping"> <strong>Extras :</strong>{{ getTopping(dish.topping) }} </p>
+                    </div>
+                    <div class="col text-right">
+                        <div class="order-item-actions">
+                            <button class="button button-outline item-edit-btn" ng-click="itemEdit(dish)"><i class="icon ion-edit"></i></button>
+                            <button class="button button-outline item-remove-btn" ng-click="itemRemove(dish)"><i class="icon ion-close"></i></button>
+                        </div>
+                        <p class="order-amount"><em>Qty:</em> {{ dish.amount}}</p>
+                        <p class="order-price"><em></em> <span class="black-bold">${{dish.total_price}}</span></p>
+                    </div>
+                </div>
+
+            </ion-item>
+
+        </ion-list>
+
+        <div class="list sum"  ng-show="items.length > 0">
+            <div class="item">
+                Net Price
+                <span class="item-note">
+                  ${{ netPrice }}
+                </span>
+            </div>
+            <div class="item">
+                Delivery Fee
+                <span class="item-note">
+                  ${{ deliveryPrice }}
+                </span>
+            </div>
+            <div class="item">
+                Taxes
+                <span class="item-note">
+                  ${{ taxesPrice }}
+                </span>
+            </div>
+            <div class="item em">
+                Grand Total
+                <span class="item-note">
+                  ${{ grandTotalPrice }}
+                </span>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive" ng-click="checkOut()" ng-show="items.length > 0">
+        <h1 class="title"><icon class="icon ion-ios-paper-outline"></icon>&nbsp;CHECK OUT</h1>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view title="" class="welcome-view" hide-nav-bar="true"  ng-init="init()">
+    <ion-content has-bouncing="true">
+        <div class="logo-welcome">
+            <img src="img/register-welcome-img.png">
+        </div>
+        <div class="welcome-txt">
+            <h2 class="three"><span>LOGIN VIA EMAIL</span></h2>
+        </div>
+        <div class="login-inputs">
+            <form name="login">
+                <label class="item item-input">
+                    <i class="icon ion-email placeholder-icon"></i>
+                    <input type="email" placeholder="ENTER YOUR EMAIL ADDRESS" ng-model="login_data.email">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-locked placeholder-icon"></i>
+                    <input type="password" placeholder="PASSWORD" ng-model="login_data.password">
+                </label>
+                <button class="button button-block button-assertive" ng-click="loginByEmail()">
+                    LOGIN
+                </button>
+                <ion-item class="forgot" ng-click="goToForgot()">Forgot Password</ion-item>
+                <button class="button button-block button-outline signup-btn" ng-click="goToSignup()">
+                    SIGN UP
+                </button>
+                <button class="button button-block button-positive icon-left ion-social-facebook fblogin-btn" ng-click="fbLogin()">
+                    Login with Facebook
+                </button>
+                <button class="button button-block button-positive icon-left ion-social-google gplogin-btn" ng-click="gplusLogin()">
+                    Sign in with Google
+                </button>
+                <ion-item class="back" ng-click="goToHome()"><< Continue as Guest</ion-item>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

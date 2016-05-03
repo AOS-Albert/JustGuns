@@ -1,0 +1,66 @@
+<div class="modal modal-view">
+    <ion-header-bar>
+        <div class="row">
+            <div class="col col-66">
+                <p class="d1">
+                    <i ng-class="[active_item.Dish.category_Veg_Nonveg]" ng-show="active_item.Dish.category_Veg_Nonveg != 'Veg'"><em></em></i>{{ active_item.Dish.dish_name }}
+                </p>
+            </div>
+            <div class="col col-25">
+                <p class="text-right">${{ active_item.Dish.dish_price }}</p>
+            </div>
+            <div class="col text-center">
+                <span class="icon ion-close d2" ng-click="closeModal()"></span>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="row" ng-show="active_item.Dish.dish_desc !== ''">
+            <div class="col">
+                <p>{{ active_item.Dish.dish_desc }}</p>
+            </div>
+        </div>
+        <div class="padding">
+            <div class="text-center">
+                <h3>How many of these?</h3>
+                <div class="number-panel">
+                    <button class="button circle-btn minus-btn" ng-click="orderMinus(active_item)">
+                        <i class="icon ion-ios-minus-empty"></i>
+                    </button>
+                    <label class="item item-input">
+                        <input type="number" class="amount" value="{{ active_item.Dish.limits_for_options }}" ng-model="active_item.amount" min="1"/>
+                    </label>
+                    <button class="button circle-btn plus-btn" ng-click="orderPlus(active_item)">
+                        <i class="icon ion-ios-plus-empty"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="item item-divider" ng-show="sides.length > 0">
+            <h2 class="text-center">{{ active_item.Dish.text_for_sides }}</h2>
+        </div>
+        <div class="row cart-option" ng-repeat="side in sides">
+            <div class="col col-75">
+                <ion-checkbox ng-model="side.Topping.isChecked" ng-change="sideChanged(side)" class="cart-option-chk">{{ side.Topping.topping_name }}<em>{{ side.Topping.topping_desc }}</em></ion-checkbox>
+            </div>
+            <div class="col">
+                <p class="red-txt text-right cart-option-price">${{ side.Topping.topping_price }}</p>
+            </div>
+        </div>
+        <div class="item item-divider" ng-show="options.length > 0">
+            <h2 class="text-center">{{ active_item.Dish.text_for_options }}</h2>
+        </div>
+        <div class="row cart-option" ng-repeat="option in options">
+            <div class="col col-75">
+                <ion-checkbox ng-model="option.Topping.isChecked" ng-change="optionChanged(option)" class="cart-option-chk">{{ option.Topping.topping_name }}<em>{{ option.Topping.topping_desc }}</em></ion-checkbox>
+            </div>
+            <div class="col">
+                <p class="red-txt text-right cart-option-price">${{ option.Topping.topping_price }}</p>
+            </div>
+        </div>
+
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+        <h1 class="title" ng-click="addToCart(active_item)">SAVE</h1>
+    </ion-footer-bar>
+</div>

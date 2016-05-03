@@ -1,0 +1,62 @@
+<ion-view title='<img class="title-image" src="img/logo2.png" />' class="resort-view" hide-nav-bar="false" ng-init="init()">
+
+    <div class="bar bar-subheader">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">SELECT LOCATION</h1>
+    </div>
+
+    <ion-content has-bouncing="true">
+        <ion-refresher
+                pulling-text="Refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <div>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchText">
+            </label>
+        </div>
+        <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+
+            <ion-item
+
+                    back-img="{{item.Resort.resort_timeline}}"
+                      ng-repeat="item in items | filter:searchText"
+                      ng-style="{'line-height': '125px'}"
+                      ng-click="openResort(item)"
+                      item="item"
+                      href="#"
+                      class="resort">
+                <div class="item-content-wrap">
+                    <h4 class="name">{{ item.Resort.resort_name }}</h4>
+                <span class="address">
+                    <i class="icon ion-ios-location"></i>&nbsp;
+                    {{ item.Resort.resort_address }}
+                </span>
+                    <!--<img class="logo" image-lazy-src="{{item.logo}}" image-lazy-loader="ios-small">-->
+                    <img class="logo" ng-src="{{item.Resort.resort_logo}}">
+
+                    <span class="icon ion-ios-telephone phone" ng-click="contact(item.Resort.resort_phone)"></span>
+                    <span class="icon icon-share-alt phone " style="right: 50px;" ng-click="share(item.Resort)"></span>
+                    <!--<span class="icon icon-share-alt" ng-click="share(item.Resort)"></span>-->
+
+                </div>
+
+                <ion-delete-button class="ion-minus-circled"
+                                   ng-click="onItemDelete(item)">
+                </ion-delete-button>
+
+                <ion-option-button class="button-assertive"
+                                   ng-click="share(item)">
+                    <div class="share-btn">
+                        <i class="icon icon-share-alt"></i>
+                        <span>Share</span>
+                    </div>
+
+                </ion-option-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

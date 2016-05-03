@@ -1,0 +1,72 @@
+<ion-view title="" class="welcome-view" hide-nav-bar="true"  ng-init="init()">
+    <ion-header-bar class="bar-dark">
+        <div class="buttons">
+            <a class="button icon-left ion-chevron-left button-clear button-light" ng-click="goToWelcome()"></a> 
+        </div>
+        <h1 class="title">SIGN UP</h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true">
+        <div class="login-btns">
+            <button class="button button-block button-light icon-left ion-social-facebook fblogin-btn" ng-click="loginWithFacebook()">
+                Sign Up with Facebook
+            </button>
+            <button class="button button-block button-light icon-left ion-social-instagram instalogin-btn" ng-click="loginWithInstagram()">
+                Sign Up  with Instagram
+            </button>
+            <button class="button button-block button-light icon-left ion-social-google gplogin-btn" ng-click="loginWithGooglePlus()">
+                Sign Up  with Google +
+            </button>
+        </div>
+<!--        <div class="social-button border-gray-1 margin-b-10" ng-click="loginWithFacebook()">
+            <div class="left border-gray-r1"><i class="icon ion-social-facebook"></i></div>
+            <div class="right">Sign In with Facebook</div>
+        </div>
+        <div class="social-button border-gray-1 margin-b-10" ng-click="loginWithInstagram()">
+            <div class="left border-gray-r1"><i class="icon ion-social-instagram-outline"></i></div>
+            <div class="right">Sign In with Instagram</div>
+        </div>
+        <div class="social-button border-gray-1 margin-b-10" ng-click="loginWithTwitter()">
+            <div class="left border-gray-r1"><i class="icon ion-social-twitter"></i></div>
+            <div class="right">Sign In with Twitter</div>
+        </div> -->
+
+        <div class="welcome-txt">
+            <h2 class="three"><span>OR</span></h2>
+        </div>
+
+
+        <form name="register-form">
+            <div class="list">
+                <label class="item item-input">
+                    <input ng-model="register_data.first_name" type="text" placeholder="First Name">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.last_name" type="text" placeholder="Last Name">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.email" type="email" placeholder="Email">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.password" type="password" placeholder="Password">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.confirm_password" type="password" placeholder="Confirm Password">
+                </label>
+            </div>
+            <div class="row upload-avatar-row">
+                <div class="col col-50">
+                    <button type="button" class="button button-block button-dark upload-btn" ng-click="uploadAvatar()">Upload Photo</button>
+                </div>
+                <div class="register-view col">
+                    <img ng-if="capture_image" class="upload-result-img" ng-src="{{capture_image}}">
+                    <img ng-if="!capture_image" src="img/profile-pic-default.png" class="upload-result-img">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block button-dark regsiter-btn" ng-click="register()">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

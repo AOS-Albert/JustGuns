@@ -1,0 +1,85 @@
+<ion-view title='<img class="title-image" src="img/logo2.png" />' class="home-view" ng-init="init()">
+
+    <div class="bar bar-subheader">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">SELECT RESTAURANT</h1>
+    </div>
+
+    <ion-slide-box active-slide="myActiveSlide" auto-play="true" slide-interval="3000" does-continue="true" show-pager="false">
+        
+        <ion-slide>
+            <div class="box ratio8_3">
+                <div class="box-content" style="background-image: url('{{ resort.resort_timeline }}');">
+                    <div class="item-content-wrap">
+                        <h2 class="rest-name">{{ resort.resort_name }}</h2>
+                        <button class="button share-btn" ng-click="share(resort)"><i class="icon icon-share-alt"></i></button>
+                        <button class="button call-btn" ng-click="contact(resort.resort_phone)"><i class="icon ion-ios-telephone"></i></button>
+                        <div class="rest-logo">
+                            <img ng-src="{{resort.resort_logo}}">
+                        </div>
+                        <!--<div class="fav-btn" ng-click="favourite(items[$index])"><i class="icon ion-android-favorite"></i></div>-->
+                        <div class="rest-address">
+                            <span style="white-space:nowrap;"><i class="icon ion-ios-location"></i>{{ resort.resort_address }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+    <ion-content has-bouncing="true" class="r4">
+        <ion-refresher
+                pulling-text="Refresh..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <div>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="searchText">
+            </label>
+        </div>
+        <div class="row gallery" ng-repeat="item in items | filter:searchText" ng-if="$index % 2 === 0">
+            <div class="col col-50" ng-if="$index < items.length" ng-click="openRestaurantDetail(items[$index])">
+
+                <div class="box ratio4_3">
+                    <div class="box-content" style="background-image: url('{{ items[$index].Restraurent.restaurant_timeline }}')">
+                        <div class="item-content-wrap">
+                            <div class="rest-logo">
+                                <img ng-src="{{items[$index].Restraurent.restaurant_logo }}">
+                                <!--<img image-lazy-src="{{items[$index].logo}}" image-lazy-loader="ripple" image-lazy-distance-from-top-to-load="30" image-lazy-distance-from-left-to-load="10">-->
+                            </div>
+                            <div class="rest-name">{{ items[$index].Restraurent.restraurent_name }}</div>
+                            <div class="rest-timing" ng-if="items[$index].Restraurent.openState">
+                                <p><span><em class="green-txt">Open</em> {{ items[$index].Restraurent.opendays }}</span></p>
+                                <p><span>Lunch {{ items[$index].Restraurent.restraurent_deliverytime_weekdays_from }} ~ {{ items[$index].Restraurent.restraurent_deliverytime_weekdays_to }}</span></p>
+                                <p><span>Dinner {{ items[$index].Restraurent.restraurent_deliverytime_weekends_from }} ~ {{ items[$index].Restraurent.restraurent_deliverytime_weekends_to }}</span></p>
+                            </div>
+                            <div class="rest-timing" ng-if="!items[$index].Restraurent.openState">
+                                <p><span><em class="red-txt">Closed</em> {{ items[$index].Restraurent.opendays }}</span></p>
+                                <p><span>Lunch {{ items[$index].Restraurent.restraurent_deliverytime_weekdays_from }} ~ {{ items[$index].Restraurent.restraurent_deliverytime_weekdays_to }}</span></p>
+                                <p><span>Dinner {{ items[$index].Restraurent.restraurent_deliverytime_weekends_from }} ~ {{ items[$index].Restraurent.restraurent_deliverytime_weekends_to }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-50" ng-if="$index + 1 < items.length" ng-click="openRestaurantDetail(items[$index + 1])">
+                <div class="box ratio4_3">
+                    <div class="box-content" style="background-image: url('{{ items[$index + 1].Restraurent.restaurant_timeline }}')">
+                        <div class="item-content-wrap" >
+                            <div class="rest-logo">
+                                <img ng-src="{{items[$index + 1].Restraurent.restaurant_logo}}">
+                                <!--<img image-lazy-src="{{items[$index + 1].logo}}" image-lazy-loader="ripple">-->
+                            </div>
+                            <p class="rest-name">{{ items[$index + 1].Restraurent.restraurent_name }}</p>
+                            <div class="rest-timing">
+                                <p><span><em class="green-txt">Open</em> {{ items[$index + 1].Restraurent.opendays }}</span></p>
+                                <p></i><span>Lunch {{ items[$index + 1].Restraurent.restraurent_deliverytime_weekdays_from }} ~ {{ items[$index + 1].Restraurent.restraurent_deliverytime_weekdays_to }}</span></p>
+                                <p></i><span>Dinner {{ items[$index + 1].Restraurent.restraurent_deliverytime_weekends_from }} ~ {{ items[$index + 1].Restraurent.restraurent_deliverytime_weekends_to }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

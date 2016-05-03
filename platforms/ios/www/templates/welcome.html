@@ -1,0 +1,84 @@
+<ion-view title="welcome" class="welcome-view md-box" hide-nav-bar="true" ng-init="init()">
+    <ion-content class"welcome-content">
+        <ion-slide-box on-slide-changed="slideChanged($index)" show-pager="true" >
+            <ion-slide>
+                <div class="">
+                    <div class="">
+                        <div class="logo-welcome">
+                            <img src="img/logo1.png" alt="Bag Icon" />
+                        </div>
+                        <h4>
+                            Welcome! JustGuns
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="">
+                    <div class="">
+                        <div class="logo-welcome">
+                            <img src="img/logo2.png" alt="Bag Icon" />
+                        </div>
+                        <h4>
+                            Welcome 2 Page
+                        </h4>
+                    </div>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="">
+                    <div class="logo-welcome">
+                        <img src="img/logo1.png" alt="Bag Icon" />
+                    </div>
+                    <h4>
+                        Welcome 3 Page
+                    </h4>
+                </div>
+            </ion-slide>
+            <ion-slide>
+                <div class="">
+                    <div class="logo-welcome">
+                        <img src="img/logo2.png" alt="Bag Icon" />
+                    </div>
+                    <h4>
+                        Welcome 4 Page
+                    </h4>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="bottom-area">
+
+            <div class="row">
+                <div class="col signup">
+                    <button ng-click="closeWelcomeIntro('signUp')" class="button button-light ">
+                        Sign up
+                    </button>
+                </div>
+                <div class="col signin">
+                    <button ng-click="closeWelcomeIntro('login')" class="button button-light ">
+                        Sign In
+                    </button>
+                </div>
+
+            </div>
+        </div>
+<!--         <div class="login-btns">
+            <button class="button button-block button-assertive guestlogin-btn" ng-click="goToGuest()">
+                Continue as Guest
+            </button>
+            <button class="button button-block button-positive icon-left ion-social-facebook fblogin-btn" ng-click="fbLogin()">
+                Login with Facebook
+            </button>
+            <button class="button button-block button-positive icon-left ion-social-google gplogin-btn" ng-click="gplusLogin()">
+                Sign in with Google
+            </button>
+            <button class="button button-block button-positive icon-left ion-ios-email-outline emaillogin-btn" ng-click="goToLogin()">
+                Sign in with Email
+            </button>
+            <button class="button button-block button-outline signup-btn" ng-click="goToSignup()">
+                SIGN UP
+            </button>
+        </div> -->
+    </ion-content>
+</ion-view>

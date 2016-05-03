@@ -1,0 +1,11 @@
+{
+    "ImageIO.framework": 1,
+    "CoreLocation.framework": 2,
+    "AVFoundation.framework": 1,
+    "QuartzCore.framework": 1,
+    "SystemConfiguration.framework": 1,
+    "CoreTelephony.framework": 1,
+    "CoreMotion.framework": 1,
+    "Social.framework": 1,
+    "MessageUI.framework": 1
+}

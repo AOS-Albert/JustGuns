@@ -1,0 +1,42 @@
+<ion-view title="" class="welcome-view" hide-nav-bar="true"  ng-init="init()">
+    <ion-header-bar class="bar-dark">
+        <div class="buttons">
+            <a class="button icon-left ion-chevron-left button-clear button-light" ng-click="goToWelcome()"></a> 
+        </div>
+        <h1 class="title">SIGN IN</h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true">
+        <div class="login-btns">
+            <button class="button button-block button-light icon-left ion-social-facebook fblogin-btn" ng-click="loginWithFacebook()">
+                Sign In with Facebook
+            </button>
+            <button class="button button-block button-light icon-left ion-social-instagram instalogin-btn" ng-click="loginWithInstagram()">
+                Sign In  with Instagram
+            </button>
+            <button class="button button-block button-light icon-left ion-social-google gplogin-btn" ng-click="loginWithGooglePlus()">
+                Sign In  with Google +
+            </button>
+        </div>
+        <div class="welcome-txt">
+            <h2 class="three"><span>OR</span></h2>
+        </div>
+
+        <div class="login-inputs">
+            <form name="login">
+                <label class="item item-input">
+                    <i class="icon ion-email placeholder-icon"></i>
+                    <input type="email" placeholder="EMAIL" ng-model="login_data.email">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-locked placeholder-icon"></i>
+                    <input type="password" placeholder="PASSWORD" ng-model="login_data.password">
+                </label>
+                <button class="button button-block button-dark" ng-click="loginByEmail()">
+                    Sign In
+                </button>
+                <ion-item class="forgot" ng-click="goToForgot()">Forgot Password?</ion-item>
+                <ion-item class="forgot" ng-click="goToSignup()">New Member? <span style="font-weight: 800">Sign Up</span></ion-item>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,74 @@
+<ion-view class="profile-view" title='<img class="title-image" src="img/logo.png" />' ng-init="init()">
+    <div class="bar bar-subheader">
+        <!--<button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>-->
+        <h1 class="title">EDIT PROFILE</h1>
+    </div>
+    <ion-content has-bouncing="true">
+        <div class="list">
+            <div class="profile-container">
+                <div ng-if="user.user_image" class="profile-pic">
+                    <img ng-src="{{ user.user_image }}" />
+                    <button ng-if="loggedin" class="button button-light edit-btn ion-ios-color-wand-outline" type="button" ng-click="editAvatar()"></button>
+                </div>
+                <div ng-if="!user.user_image" class="profile-pic">
+                    <img src="img/profile-pic-default.png" />
+                    <button ng-if="loggedin" class="button button-light edit-btn ion-ios-color-wand-outline" type="button" ng-click="editAvatar()"></button>
+                </div>
+                <!--<div class="fb-con" ng-if="loggedin">-->
+                    <!--<button class="button button-block button-positive icon-left ion-social-facebook fb-btn" type="button" ng-click="fbConnect()">Connect with Facebook</button>-->
+                <!--</div>-->
+            </div>
+            <div class="list">
+                <label class="item item-input field-disabled">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span class="input-label">FirstName<em>*</em></span>
+                    <input ng-model="user.first_name" type="text" placeholder="FirstName">
+                </label>
+                <label class="item item-input field-disabled">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span class="input-label">LastName<em>*</em></span>
+                    <input ng-model="user.last_name" type="text" placeholder="LastName">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    <span class="input-label">Phone<em>*</em></span>
+                    <input ng-model="user.user_phoneNo" type="tel" placeholder="ex:)+91 8123595959">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-email-outline"></i>
+                    <span class="input-label">Email<em>*</em></span>
+                    <input ng-model="user.email" type="email" placeholder="Chanu Sukarno">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-locked"></i>
+                    <span class="input-label">Password<em>*</em></span>
+                    <input ng-model="user.password" type="password" placeholder="">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-home"></i>
+                    <span class="input-label">Address</span>
+                    <input ng-model="user.user_address" type="text" placeholder="INDIA">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-android-map"></i>
+                    <span class="input-label">City</span>
+                    <input ng-model="user.user_city" type="text" placeholder="CityName">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-ios-location-outline"></i>
+                    <span class="input-label">State</span>
+                    <input ng-model="user.user_state" type="text" placeholder="StateName">
+                </label>
+                <label class="item" ng-if="loggedin">
+                    <button class="button button-assertive button-block logout-btn" ng-click="logout()">Logout</button>
+                </label>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive" ng-click="update()" ng-if="loggedin">
+        <h1 class="title"><icon class="icon ion-android-person"></icon>&nbsp;Update Profile</h1>
+    </ion-footer-bar>
+    <ion-footer-bar align-title="left" class="bar-assertive" ng-click="goLogin()" ng-if="!loggedin">
+        <h1 class="title"><icon class="icon ion-android-person"></icon>&nbsp;Please LogIn</h1>
+    </ion-footer-bar>
+</ion-view>

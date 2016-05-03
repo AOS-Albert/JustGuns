@@ -1,0 +1,35 @@
+<ion-view title='<img class="title-image" src="img/logo2.png" />' class="resort-view" hide-nav-bar="false" ng-init="init()">
+    <div class="bar bar-subheader">
+        
+        <h1 class="title">USER ADDRESS</h1>
+    </div>
+    <ion-content padding="true" style="width: 100%; height: 100%; background-image:url(./img/addressbg_1.jpg);background-size:cover;background-position: center;">
+        <div class="jumbotron text-center">
+            <h1 class="">Delivery When You Want It!</h1>
+        </div>
+        <div class="scroll" style="-webkit-transform: translate3d(0px, 0px, 0px);">
+            <div>
+               <ion-google-place placeholder="Enter Street Address, City, State" ng-model="user.address" required name="address" location-changed="locationChanged" class="ng-pristine ng-valid"/>
+            </div>
+            <label class="item item-input">
+                <i class="icon ion-ios-location-outline"></i>
+                <input value="" type="text" placeholder="Zipcode" name="EventPostcode" ng-model="user.zipcode" id="EventPostcode" required="">
+            </label>
+            <div>
+               <button class="button button-block button-positive icon-right ion-chevron-right disable-user-behavior" ng-click="orderNow()">ORDER NOW</button>
+            </div>
+        </div>
+        <div class="lipow">
+            <span class="ajjf">OR</span>
+        </div>
+        <div class="ruiit">
+            <span class="nnbh">
+                Staying at a Resort or Vacation Home? 
+                <a ng-click="goResort()" style="color: #F48942;">Click here</a> to select your location
+            </span>
+        </div>
+        <div class="scroll-bar scroll-bar-v">
+            <div class="scroll-bar-indicator scroll-bar-fade-out" style="height: 0px; -webkit-transform: translate3d(0px, 0px, 0px) scaleY(1);"></div>
+        </div>
+    </ion-content>
+</ion-view>

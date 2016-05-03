@@ -1,0 +1,56 @@
+<ion-view class="register-view" title='<img class="title-image" src="img/logo.png" />' hide-nav-bar="true"  ng-init="init()">
+    <ion-content has-bouncing="true">
+        <div class="logo-welcome">
+            <img src="img/register-welcome-img.png">
+        </div>
+        <div class="welcome-txt">
+            <h2 class="three"><span>REGISTER</span></h2>
+        </div>
+        <form name="register-form">
+            <div class="list">
+                <label class="item item-input">
+                    <input ng-model="register_data.first_name" type="text" placeholder="First Name">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.last_name" type="text" placeholder="Last Name">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.email" type="email" placeholder="Email">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.user_phoneNo" type="tel" placeholder="Phone">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.password" type="password" placeholder="Password">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.confirm_password" type="password" placeholder="Confirm Password">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.user_address" type="text" placeholder="Street Address">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.user_city" type="text" placeholder="City">
+                </label>
+                <label class="item item-input">
+                    <input ng-model="register_data.user_state" type="text" placeholder="State">
+                </label>
+            </div>
+            <div class="row upload-avatar-row">
+                <div class="col col-50">
+                    <button type="button" class="button button-block button-assertive upload-btn" ng-click="uploadAvatar()">Upload Photo</button>
+                </div>
+                <div class="col">
+                    <img ng-if="capture_image" class="upload-result-img" ng-src="{{capture_image}}">
+                    <img ng-if="!capture_image" src="img/profile-pic-default.png" class="upload-result-img">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block button-assertive regsiter-btn" ng-click="register()">REGISTER</button>
+                </div>
+            </div>
+            <ion-item class="back" ng-click="goToLogin()"><< Back</ion-item>
+        </form>
+    </ion-content>
+</ion-view>

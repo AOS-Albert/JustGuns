@@ -1,0 +1,9 @@
+<ion-popover-view>
+    <ion-content>        
+        <div class="list">
+            <ion-item  ng-class="{'item ng-binding selected': category.selected, 'item ng-binding': !category.selected}" ng-repeat="category in categories" ng-show="$index >= 3" ng-click="more(category)">
+                <img ng-src="{{ category.Category.category_image }}" class="popover-icon">
+                {{ category.Category.category_name }}</ion-item>
+        </div>
+    </ion-content>
+</ion-popover-view>

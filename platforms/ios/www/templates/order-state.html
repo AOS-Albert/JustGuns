@@ -1,0 +1,120 @@
+<ion-view title='<img class="title-image" src="img/logo.png" />' class="order-view" ng-init="init()">
+
+    <div class="bar bar-subheader">
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack()"></button>
+        <h1 class="title">ORDER STATE</h1>
+    </div>
+
+    <ion-content has-bouncing="true" ng-show="order">
+        <ion-item ng-style="{'line-height': '125px'}"
+                  href="#">
+            <div class="row">
+                <div class="col col-20 first">
+                    <h2 class="order-title"> {{ changeDateFormat(order.OrderInfo.Order.order_time) | date : 'dd' }} </h2>
+                    <p class="order-datetime"> {{ changeDateFormat(order.OrderInfo.Order.order_time) | date : 'MMM yyyy' }} </p>
+                </div>
+                <div class="col col-50 fourth">
+                    <h2 class="order-restr-name"> {{ order.OrderInfo.Restraurent.restraurent_name }}</h2>
+                    <p class="order-id">Order No: {{ order.OrderInfo.Order.id }}</p>
+                </div>
+                <div class="col fifth">
+                    <p class="order-amount">Qty: <span class="black-bold">{{ orderDishes.length }}</span></p>
+                    <p class="order-price">Total: <span class="black-bold">${{ order.OrderInfo.Order.grandTotal }}</span> </p>
+                </div>
+            </div>
+
+        </ion-item>
+        <div class="row table-header assertive-bg r0">
+            <div class="col col-50">ITEM</div>
+            <div class="col col-15">QTY</div>
+            <div class="col">PRICE</div>
+        </div>
+        <div class="r1" ng-repeat="dish in orderDishes">
+            <div class="row">
+                <div class="col col-50">
+                    <h4>{{ dish.OrderDish.dish_name }}</h4>
+                </div>
+                <div class="col col-15">
+                    <h4>({{ dish.OrderDish.dish_qty }})</h4>
+                </div>
+                <div class="col">
+                    <h4>${{ dish.OrderDish.dish_price }}</h4>
+                </div>
+            </div>
+            <div class="row r11" ng-repeat="topping in dish.OrderTopping">
+                <div class="col col-50">
+                    <p>{{ topping.topping_nane }} ({{ topping.topping_qty }})</p>
+                </div>
+                <div class="col col-15">
+
+                </div>
+                <div class="col">
+                    <p>+${{ topping.topping_price }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row table-header assertive-bg r2">
+            <div class="col col-66">Delivery Fee</div><!--Dragon-->
+            <div class="col text-right">${{ order.OrderInfo.Order.shipping_charges }}</div>
+        </div>
+        <div class="row table-header assertive-bg r2">
+            <div class="col col-66">Tax Amount</div>
+            <div class="col text-right">${{ order.OrderInfo.Order.tax_amount }}</div>
+        </div>
+        <div class="row table-header assertive-bg r2">
+            <div class="col col-66">Driver Tip Amount</div>
+            <div class="col text-right">${{ order.OrderInfo.Order.tip }}</div>
+        </div>
+        <div class="row table-header assertive-bg r2">
+            <div class="col col-66">Total</div>
+            <div class="col text-right">${{ order.OrderInfo.Order.grandTotal }}</div>
+        </div>
+        <div class="item item-divider assertive-bg text-center r0">
+            <icon class="icon icon-truck"></icon>&nbsp;Deliver To
+        </div>
+
+            <div>&nbsp;Name &nbsp;&nbsp;:&nbsp;&nbsp;   {{order.OrderInfo.User.first_name}} {{order.OrderInfo.User.last_name}}</div>
+            <div><font size="0.9">&nbsp;Location Name    :   {{order.OrderInfo.Resort.resort_name}}</font></div>
+            <div><font size="0.9">&nbsp;Location Address :   {{order.OrderInfo.Resort.resort_address}}</font></div>
+            <div><font size="0.9">&nbsp;suit/Room Details:   {{order.OrderInfo.Billing.room_no}}</font></div>
+            <div><font size="0.9">&nbsp;Driver instructions:   {{order.OrderInfo.Billing.special_instructions}}</font></div>
+            <div class="item item-divider assertive-bg text-center r0">
+            <icon class="icon icon-truck"></icon>&nbsp;Track Order
+        </div>
+        <div class="row text-center r3">
+            <div class="col col-25">
+                <div ng-class="['r5',(order.OrderInfo.Order.status == 0)?'selected':'']">
+                    <div ng-class="['state-mark',(order.OrderInfo.Order.status >= 0)?'past':'']">1</div>
+                </div>
+                <p><font size="0.9">Order Pending</font></p>
+                <div class="state-arrow"></div>
+            </div>
+            <div class="col col-25">
+                <div ng-class="['r5',(order.OrderInfo.Order.status == 1)?'selected':'']">
+                    <div ng-class="['state-mark',(order.OrderInfo.Order.status >= 1)?'past':'']">2</div>
+                </div>
+                <p><font size="0.9">Order Processing</font></p>
+                <div class="state-arrow"></div>
+            </div>
+            <div class="col col-25">
+                <div ng-class="['r5',(order.OrderInfo.Order.status == 2)?'selected':'']">
+                    <div ng-class="['state-mark',(order.OrderInfo.Order.status >= 2)?'past':'']">3</div>
+                </div>
+                <p><font size="0.9">Out for Delivery</font></p>
+                <div class="state-arrow"></div>
+            </div>
+            <div class="col col-25">
+                <div ng-class="['r5',(order.OrderInfo.Order.status == 3)?'selected':'']">
+                    <div ng-class="['state-mark',(order.OrderInfo.Order.status >= 3)?'past':'']">4</div>
+                </div>
+                <p><font size="0.9">Order Delivered</font></p>
+            </div>
+            <!--<div class="col col-20">
+                <div ng-class="['r5',(order.OrderInfo.Order.status == 4)?'selected':'']">
+                    <div ng-class="['state-mark',(order.OrderInfo.Order.status >= 4)?'cancel':'']">5</div>
+                </div>
+                <p>Order Cancelled</p>
+            </div>Dragon-->
+        </div>
+    </ion-content>
+</ion-view>

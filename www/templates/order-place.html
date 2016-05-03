@@ -1,0 +1,64 @@
+<ion-view title='<img class="title-image" src="img/logo.png" />' class="main-view" ng-init="init()">
+    <div class="bar bar-subheader" style="clear:both">
+        <!--<ion-nav-back-button class="subnav-back button-clear">-->
+            <!--<i class="icon ion-ios-arrow-back"></i>-->
+        <!--</ion-nav-back-button>-->
+        <button class="button icon ion-ios-arrow-back subnav-back" ng-click="goBack($event)"></button>
+        <h1 class="title">CHECKOUT</h1><!--Dragon-->
+    </div>
+    <div class="banner">
+        <div class="box ratio8_3">
+            <div class="box-content" style="background-image: url('{{ active_restaurant.Restraurent.restaurant_timeline }}');">
+                <div class="item-content-wrap">
+                    <h2 class="rest-name">{{ active_restaurant.Restraurent.restraurent_name }}</h2>
+                    <!--<button class="button call-btn" ng-click="restaurantCall(slide.contact)"><i class="icon ion-ios-telephone"></i></button>-->
+                    <div class="rest-logo">
+                        <img ng-src="{{ active_restaurant.Restraurent.restaurant_logo }}">
+                    </div>
+                    <!--<div class="fav-btn" ng-click="favourite(slide)"><i class="icon ion-android-favorite"></i></div>-->
+                    <div class="share-btn" ng-click="share(active_restaurant)"><i class="icon icon-share-alt"></i></div>
+                    <div class="rest-timing">
+                        <p><i class="icon ion-ios-calendar-outline"></i><span><em class="green-txt">Open</em> {{ active_restaurant.Restraurent.opendays }}</span></p>
+                        <p><i class="icon ion-ios-timer"></i><span>Lunch {{ active_restaurant.Restraurent.restraurent_deliverytime_weekdays_from }} ~ {{ active_restaurant.Restraurent.restraurent_deliverytime_weekdays_to }}</span></p>
+                        <p><i class="icon ion-ios-timer"></i><span>Dinner {{ active_restaurant.Restraurent.restraurent_deliverytime_weekends_from }} ~ {{ active_restaurant.Restraurent.restraurent_deliverytime_weekends_to }} </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ion-content>
+
+        <div class="tabs tabs-icon-left">
+            <a ng-class="{'tab-item selected': category.selected, 'tab-item': !category.selected}" ng-repeat="category in categories  | limitTo: 3 track by $index" ng-click="loadCategoryDishes(category,$index)">
+                <img ng-src="{{ category.Category.category_image }}" >
+                {{ category.Category.category_name }}
+            </a>
+            <a ng-class="{'tab-item selected': category.selected, 'tab-item': !category.selected}" ng-click="popover.show($event)" ng-show="categories.length > 3">
+                <img ng-src="{{ more_tab_icon }}" class="moretab-icon">
+                More
+            </a>
+        </div>
+        <ion-nav-view name="category-tab">
+            <ion-content has-header="true" padding="true" has-bouncing="true">
+
+                <ion-list>
+                    <ion-item ng-class="{'item item-icon-right selected': dish.selected, 'item item-icon-right': !dish.selected}" ng-repeat="dish in dishes" ng-click="openToppingDlg(dish)">
+                        <p>{{ dish.Dish.dish_name }}<img ng-show="dish.Dish.category_Veg_Nonveg === 'Veg'" src="img/veg.jpg" width="10px" style="margin-left: 5px"></p>
+                        <h2>${{ dish.Dish.dish_price }}</h2>
+                        <i class="icon ion-ios-cart"><em>ADD TO CART</em></i>
+                    </ion-item>
+                    <ion-infinite-scroll on-infinite="addItems()"></ion-infinite-scroll>
+                </ion-list>
+
+            </ion-content>
+        </ion-nav-view>
+
+    </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive" ng-click="placeOrder()">
+        <h1 class="title"><icon class="icon ion-ios-cart"></icon>&nbsp;Place Order</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+
